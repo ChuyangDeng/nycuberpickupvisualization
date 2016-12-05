@@ -3,10 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%=title%></title>
+    <title>Uber Pickups Visualization in New York City</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
-    <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/simple-sidebar.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://js.arcgis.com/3.18/"></script>
     <script>
         var map, csv;
@@ -23,7 +26,7 @@
         ) {
             map = new Map("map", {
                 basemap: "dark-gray",
-                center: [-74.0068, 40.7400],
+                center: [-74.0068, 40.7405],
                 zoom: 17
             });
             csv = new CSVLayer("datasets/palantir.csv");
@@ -37,12 +40,81 @@
         });
     </script>
 </head>
-<body class="claro">
-<div id="map">
-    <a href="/" class="button">Monday</a>
-    <a href="/palantir" class="button">Palantir</a>
+
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/">
+                    Choose A Time Frame
+                </a>
+            </li>
+            <li>
+                <a href="/palantir">Palantir</a>
+            </li>
+            <li>
+                <a href="#">Shortcuts</a>
+            </li>
+            <li>
+                <a href="#">Overview</a>
+            </li>
+            <li>
+                <a href="#">Events</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+
+            <body class="claro">
+            <div id="map"></div>
+            </body>
+
+            <div>
+                <h3>Instructions on how to use this app ...</h3>
+                <h3>And some analysis</h3>
+            </div>
+
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
 </div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
 </body>
+
 <style>
     html, body, #map {
         height: 100%;

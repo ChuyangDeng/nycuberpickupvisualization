@@ -6,6 +6,7 @@
   <title>Uber Pickups Visualization in New York City</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
   <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
   <script src="https://js.arcgis.com/3.18/"></script>
   <script>
       var map, csv;
@@ -23,11 +24,11 @@
           map = new Map("map", {
               basemap: "dark-gray",
               center: [-74.0068, 40.7414],
-              zoom: 17
+              zoom: 12
           });
-          csv = new CSVLayer("datasets/palantir.csv");
+          csv = new CSVLayer("datasets/monday.csv");
           var orangeRed = new Color([238, 69, 0, 0.5]);
-          var marker = new SimpleMarkerSymbol("solid", 10, null, orangeRed);
+          var marker = new SimpleMarkerSymbol("solid", 5, null, orangeRed);
           var renderer = new SimpleRenderer(marker);
           csv.setRenderer(renderer);
           var template = new InfoTemplate("${type}", "${place}");
@@ -37,7 +38,10 @@
   </script>
 </head>
 <body class="claro">
-<div id="map"></div>
+<div id="map">
+  <a href="/" class="button">Monday</a>
+  <a href="/palantir" class="button">Palantir</a>
+</div>
 </body>
 <style>
   html, body, #map {

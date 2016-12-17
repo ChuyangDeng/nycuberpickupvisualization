@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4cb15e7-880a-4f52-98d4-4b4bc635e91a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/eighteen.ejs" afterPath="$PROJECT_DIR$/views/eighteen.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/fifteen.ejs" afterPath="$PROJECT_DIR$/views/fifteen.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/nine_twelve.ejs" afterPath="$PROJECT_DIR$/views/nine_twelve.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/six_nine.ejs" afterPath="$PROJECT_DIR$/views/six_nine.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/three_six.ejs" afterPath="$PROJECT_DIR$/views/three_six.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/twelve_fifteen.ejs" afterPath="$PROJECT_DIR$/views/twelve_fifteen.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/twentyone_zero.ejs" afterPath="$PROJECT_DIR$/views/twentyone_zero.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/zero_three.ejs" afterPath="$PROJECT_DIR$/views/zero_three.ejs" />
-    </list>
+    <list default="true" id="c4cb15e7-880a-4f52-98d4-4b4bc635e91a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -44,8 +34,8 @@
       <file leaf-file-name="twentyone_zero.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/twentyone_zero.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="96" column="18" lean-forward="true" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
+            <state relative-caret-position="250">
+              <caret line="103" column="3" lean-forward="false" selection-start-line="103" selection-start-column="3" selection-end-line="103" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -315,12 +305,12 @@
       <workItem from="1480958628751" duration="138000" />
       <workItem from="1480960440590" duration="2418000" />
       <workItem from="1480969719060" duration="264000" />
-      <workItem from="1482002525215" duration="3395000" />
+      <workItem from="1482002525215" duration="3961000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14153000" />
+    <option name="totallyTimeSpent" value="14719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="23" width="1280" height="709" extended-state="0" />
@@ -332,7 +322,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32736155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -758,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/twentyone_zero.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="96" column="18" lean-forward="true" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
+        <state relative-caret-position="250">
+          <caret line="103" column="3" lean-forward="false" selection-start-line="103" selection-start-column="3" selection-end-line="103" selection-end-column="3" />
           <folding />
         </state>
       </provider>

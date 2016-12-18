@@ -6,8 +6,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+<<<<<<< HEAD
 var palantir = require('./routes/palantir');
 var week = require('./routes/week');
+=======
+var zero_three = require('./routes/zero_three');
+var three_six = require('./routes/three_six');
+var six_nine = require('./routes/six_nine');
+var nine_twelve = require('./routes/nine_twelve');
+var twelve_fifteen = require('./routes/twelve_fifteen');
+var fifteen = require('./routes/fifteen');
+var eighteen = require('./routes/eighteen');
+var twentyone_zero = require('./routes/twentyone_zero');
+>>>>>>> 9afd4d36442a9ef6f08046bf8b76a18af70b7c03
 
 var app = express();
 
@@ -24,8 +35,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+<<<<<<< HEAD
 app.use('/palantir', palantir);
 app.use('/week', week);
+=======
+app.use('/zero_three', zero_three);
+app.use('/three_six', three_six);
+app.use('/six_nine', six_nine);
+app.use('/nine_twelve', nine_twelve);
+app.use('/twelve_fifteen', twelve_fifteen);
+app.use('/fifteen', fifteen);
+app.use('/eighteen', eighteen);
+app.use('/twentyone_zero', twentyone_zero);
+>>>>>>> 9afd4d36442a9ef6f08046bf8b76a18af70b7c03
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

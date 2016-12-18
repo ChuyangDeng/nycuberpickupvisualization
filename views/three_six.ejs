@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Uber Pickups Visualization in New York City</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/simple-sidebar.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://js.arcgis.com/3.18/"></script>
+    <script>
+        var map, csv;
+        require([
+            "esri/map",
+            "esri/layers/CSVLayer",
+            "esri/Color",
+            "esri/symbols/SimpleMarkerSymbol",
+            "esri/renderers/SimpleRenderer",
+            "esri/InfoTemplate",
+            "dojo/domReady!"
+        ], function(
+            Map, CSVLayer, Color, SimpleMarkerSymbol, SimpleRenderer, InfoTemplate
+        ) {
+            map = new Map("map", {
+                basemap: "dark-gray",
+                center: [-74.0068, 40.7414],
+                zoom: 12
+            });
+            csv = new CSVLayer("datasets/Hour3-6.csv");
+            var orangeRed = new Color([238, 69, 0, 0.5]);
+            var marker = new SimpleMarkerSymbol("solid", 5, null, orangeRed);
+            var renderer = new SimpleRenderer(marker);
+            csv.setRenderer(renderer);
+            var template = new InfoTemplate("${type}", "${place}");
+            csv.setInfoTemplate(template);
+            map.addLayer(csv);
+        });
+    </script>
+</head>
+
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/">
+                    Choose A Time Frame
+                </a>
+            </li>
+            <li>
+                <a href="/zero_three">00:00 - 03:00</a>
+            </li>
+            <li>
+                <a href="/three_six">03:00 - 06:00</a>
+            </li>
+            <li>
+                <a href="/six_nine">06:00 - 09:00</a>
+            </li>
+            <li>
+                <a href="/nine_twelve">09:00 - 12:00</a>
+            </li>
+            <li>
+                <a href="/twelve_fifteen">12:00 - 15:00</a>
+            </li>
+            <li>
+                <a href="/fifteen">15:00 - 18:00</a>
+            </li>
+            <li>
+                <a href="/eighteen">18:00 - 21:00</a>
+            </li>
+            <li>
+                <a href="/twentyone_zero">21:00 - 24:00</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+
+            <body class="claro">
+            <div id="map"></div>
+            </body>
+
+            <div>
+                <h3>Want more data?</h3>
+                <p>Now you have tasted the distribution of Uber pickup locations in NYC</p>
+                <p>Click the button to see company-related data visualization!</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+<style>
+    html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+</html>

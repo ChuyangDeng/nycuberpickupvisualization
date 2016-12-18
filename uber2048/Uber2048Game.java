@@ -1,8 +1,6 @@
-package pokemon2048;
+package game;
 
 import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -10,30 +8,38 @@ import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class PlayBoard extends JLabel
-{
+/* Use a PlayBoard class to represent the grids */
+class PlayBoard extends JLabel {
 	int number;
 	int values[] = {2, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048};
 	int coordinateX[] = {63, 184, 305, 426, 63, 184, 305, 426, 63, 184, 305, 426, 63, 184, 305, 426};
 	int coordinateY[] = {265, 265, 265, 265, 386, 386, 386, 386, 507, 507, 507, 507, 628, 628, 628, 628};
 	int length = 110;
 	
-	void disappear(){
-		this.setVisible(false);
-	}
-	void appear(){
-		this.setVisible(true);
-	}
-	public void start(int stage)
-	{
+	/* Use start to merge icons */
+	public void start(int stage) {
 		this.setBounds(coordinateX[stage], coordinateY[stage], length, length);
 		disappear();
 	}
+	
+	/* This method is called when a direction key is pressed
+	 * the original icon that still has space in the direction will disappear */
+	void disappear(){
+		this.setVisible(false);
+	}
+	
+	/* This method will generate new icons after the disappear method */
+	void appear() {
+		this.setVisible(true);
+	}
 }
 
-public class Pokemon2048Game extends JFrame{
-
+public class Uber2048Game extends JFrame{
+	
+	/* A button to start the game */
 	private JButton buttonStart = new JButton();
+	
+	/* Padding the file path */
 	private String path = this.getClass().getClassLoader().getResource(".").getPath();
 	
 	private JLabel board;
@@ -44,32 +50,31 @@ public class Pokemon2048Game extends JFrame{
 	
 	private KeyboardPanel keyboardPanel = new KeyboardPanel();
 	
-	private JLabel welcome1 = new JLabel("WELCOME TO POKEMON 2048!"
-			+ " Click \"START\" to begin.");
-	private JLabel welcome2 = new JLabel( " You\'ll get a PIKACHU when you reach 1024! "
-			+ "A RAICHU at 2048!");
+	private JLabel welcome1 = new JLabel("For more information about Uber trips, please visit: ");
+	private JLabel welcome2 = new JLabel( "LINKE HERE");
 	
+	/* Create a 4 * 4 play board */
 	public PlayBoard blocks[] = new PlayBoard[16];
 	boolean check[] = new boolean[16];
 	
+	/* Store all possible values and x & y coordinates in arrays */
 	int currentScore = 0;
 	int values[] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048};
 	int posX[] = {63, 184, 305, 426, 63, 184, 305, 426, 63, 184, 305, 426, 63, 184, 305, 426};
 	int posY[] = {265, 265, 265, 265, 386, 386, 386, 386, 507, 507, 507, 507, 628, 628, 628, 628};
 	int length = 110;
 	
+	/* Numbers will be replaced by icons later */
 	public static ImageIcon number[] = new ImageIcon[17];
 	
-	void setBoard(int block, int content)
-	{
+	void setBoard(int block, int content) {
 		blocks[block].setIcon(number[content]);
 		blocks[block].number = content;
 	}
 	
-	boolean gameOver()
-	{
-		for(int i = 0; i < 16; i ++)
-		{
+	/* When all grids are filled and there is no space to move, game is over */
+	boolean gameOver() {
+		for(int i = 0; i < 16; i ++) {
 			if(check[i] == false)
 				return false;
 			if(((i + 1 <= i - i % 4 + 3) && (blocks[i].number == blocks[i + 1].number)) || 
@@ -79,43 +84,43 @@ public class Pokemon2048Game extends JFrame{
 		return true;
 	}
 	
-	void disappear(int k)
-	{
+	/* When a grid calls disappear(), this grid become "inactive" */
+	void disappear(int k) {
 		blocks[k].disappear();
 		check[k] = false;
 	}
 	
-	void appear(int k)
-	{
+	/* When a grid calls appear(), this grid become "active" */
+	void appear(int k) {
 		blocks[k].appear();
 		check[k] = true;
 	}
 	
-	void evolve(int s)
-	{
+	/* Merge grids and increment current score */
+	void evolve(int s) {
 		setBoard(s, blocks[s].number + 1);
 		currentScore += values[blocks[s].number];
 		showScore.setText("" + currentScore);
 	}
 	
-	private class clickAction implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{			
+	/* Create a click event
+	 * When clicked, game start and two random grids are becomeing active (appear() and check = true)
+	 *  */
+	private class clickAction implements ActionListener {
+		public void actionPerformed(ActionEvent event) {			
 			for(int i = 0; i < 16; i ++)
 				check[i] = false;
 			int rand1, rand2;
 			Random random = new Random();
 			rand1 = Math.abs(random.nextInt()) % 16;
 			rand2 = Math.abs(random.nextInt()) % 16;
-			while(rand2 == rand1)
-			{
+			while(rand2 == rand1) {
 				rand2 = Math.abs(random.nextInt()) % 16;
 			}
 			check[rand1] = true;
 			check[rand2] = true;
 			
-			for(int i = 0; i < 16; i ++){
+			for(int i = 0; i < 16; i ++) {
 				blocks[i].start(i);
 				if(Math.abs(random.nextInt()) % 10 == 0)
 					setBoard(i, 1);
@@ -133,50 +138,47 @@ public class Pokemon2048Game extends JFrame{
 	}
 	clickAction click = new clickAction();
 	
-	class KeyboardPanel extends JPanel{
+	/* Determine keyboard interactions */
+	class KeyboardPanel extends JPanel {
 	    private char KeyChar = 'A' ;
 
-	    public KeyboardPanel(){
-	    	addKeyListener( new KeyAdapter(){
-              public void keyPressed(KeyEvent e){
-                     switch(e.getKeyCode()){
-                     case KeyEvent.VK_DOWN: toSouth(); break;
-                     case KeyEvent.VK_UP: toNorth(); break;
-                     case KeyEvent.VK_LEFT: toWest(); break;
-                     case KeyEvent.VK_RIGHT: toEast(); break;
-                     default: KeyChar = e.getKeyChar();
+	    public KeyboardPanel() {
+	    	addKeyListener( new KeyAdapter() {
+              public void keyPressed(KeyEvent e) {
+                     switch(e.getKeyCode()) {
+	                     case KeyEvent.VK_DOWN: toSouth(); break;
+	                     case KeyEvent.VK_UP: toNorth(); break;
+	                     case KeyEvent.VK_LEFT: toWest(); break;
+	                     case KeyEvent.VK_RIGHT: toEast(); break;
+	                     default: KeyChar = e.getKeyChar();
                     }
                      	
                     repaint();
-              		}
-	    		});
+              }
+	    	});
 	    }
 	    
-	    boolean boundary(int position, int direction, int i)
-	    {
-	    	if(direction == 0) // SOUTH
-	    	{
+	    /* declare boundaries */
+	    boolean boundary(int position, int direction, int i) {
+	    	if(direction == 0) { /* DOWN */
 	    		if(i < 16)  return true;
 	    		return false;
 	    	}
-	    	else if(direction == 1) // NORTH
-	    	{
+	    	else if(direction == 1) { /* UP */
 	    		if(i >= 0)  return true;
 	    		return false;
 	    	}
-	    	else if(direction == 2) // WEST
-	    	{
+	    	else if(direction == 2) { /* RIGHT */
 	    		if(i >= position - position % 4)  return true;
 	    		return false;
 	    	}
-	    	else // EAST
-	    	{
+	    	else { /* LEFT */
 	    		if(i <= position - position % 4 + 3)  return true;
 	    		return false;
 	    	}
 	    }
 	    
-	    void newPokemon()
+	    void newUber()
 	    {
 	    	int newPosition = Math.abs(new Random().nextInt()) % 16;
 	    	while(check[newPosition])
@@ -240,7 +242,7 @@ public class Pokemon2048Game extends JFrame{
 			}
 			if(move == true)
 			{
-				newPokemon();
+				newUber();
 			}
 		}
 	    
@@ -274,7 +276,7 @@ public class Pokemon2048Game extends JFrame{
 			}
 			if(move == true)
 			{
-				newPokemon();
+				newUber();
 			}
 		}
 	    
@@ -309,7 +311,7 @@ public class Pokemon2048Game extends JFrame{
 		
 			if(move == true)
 			{
-				newPokemon();
+				newUber();
 			}
 		}
 		
@@ -342,12 +344,12 @@ public class Pokemon2048Game extends JFrame{
 			}
 			if(move == true)
 			{
-				newPokemon();
+				newUber();
 			}
 		}
 	}
 	
-	public Pokemon2048Game()
+	public Uber2048Game()
 	{
 		super();
 		this.setSize(600, 800);
@@ -356,7 +358,7 @@ public class Pokemon2048Game extends JFrame{
 		this.setTitle("POKEMON 2048");
 		this.getContentPane().setBackground(Color.LIGHT_GRAY);
 		
-		//将数字用POKEMON ICON代替
+//		将数字用POKEMON ICON代替
 		for(int i = 0; i < 9; i ++){
 			number[i] = new ImageIcon(path + values[i] + ".png");
 		}
@@ -410,9 +412,9 @@ public class Pokemon2048Game extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		Pokemon2048Game w = new Pokemon2048Game();
+		Uber2048Game game = new Uber2048Game();
 
-		w.initial();
-		w.setVisible(true);
+		game.initial();
+		game.setVisible(true);
 	}
 }

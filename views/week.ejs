@@ -12,6 +12,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://js.arcgis.com/3.18/"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
       rect.bordered { stroke: #E6E6E6; stroke-width:2px; }
       text.mono { font-size: 9pt; font-family: Consolas, courier; fill: #aaa; }
@@ -23,39 +25,46 @@
   
   <body>
     
-     <!--Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="/">
-                    Choose A Time Frame
-                </a>
-            </li>
-            <li>
-                <a href="/palantir">Palantir</a>
-            </li>
-            <li>
-                <a href="/week">Week</a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
+       <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="/">
+          Choose A Time Frame
+        </a>
+      </li>
+      <li>
+        <a href="/zero_three">00:00 - 03:00</a>
+      </li>
+      <li>
+        <a href="/three_six">03:00 - 06:00</a>
+      </li>
+      <li>
+        <a href="/six_nine">06:00 - 09:00</a>
+      </li>
+      <li>
+        <a href="/nine_twelve">09:00 - 12:00</a>
+      </li>
+      <li>
+        <a href="/twelve_fifteen">12:00 - 15:00</a>
+      </li>
+      <li>
+        <a href="/fifteen">15:00 - 18:00</a>
+      </li>
+      <li>
+        <a href="/eighteen">18:00 - 21:00</a>
+      </li>
+      <li>
+        <a href="/twentyone_zero">21:00 - 24:00</a>
+      </li>
+      <li>
+        <a href="/week">Pickup at Tech Companies</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
     <div id="chart"></div>
-    <div id="dataset-picker" style="float:right">
+    <div id="dataset-picker" style="margin-left: 300px;">
     </div>
     <script type="text/javascript" id="week">
       var margin = { top: 50, right: 50, bottom: 100, left: 285 },
@@ -166,11 +175,17 @@
         .append("input")
         .attr("value", function(d){ return d.replace("/static/", "").replace(".tsv", "") })
         .attr("type", "button")
+        .attr("class", "btn btn-primary btn-lg")
         .attr("class", "dataset-button")
         .on("click", function(d) {
           heatmapChart(d);
         });
         
     </script>
+    
+    <h3 style="margin-left: 270px">Description</h3>
+    <p style="margin-left: 270px">This is a visulization of Uber pick ups around Google New York Office and Palantir New York Office between April 2014 and July 2014.
+    <br>
+    The visualization is break down by weekday and hour. </p>
   </body>
 </html>

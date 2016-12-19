@@ -16,6 +16,7 @@ var fifteen = require('./routes/fifteen');
 var eighteen = require('./routes/eighteen');
 var twentyone_zero = require('./routes/twentyone_zero');
 var week = require('./routes/week');
+var tweets = require('./routes/tweets');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/fifteen', fifteen);
 app.use('/eighteen', eighteen);
 app.use('/twentyone_zero', twentyone_zero);
 app.use('/week', week);
+app.use('/tweets', tweets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

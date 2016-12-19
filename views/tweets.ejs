@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Uber Pickups Visualization in New York City</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/simple-sidebar.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://js.arcgis.com/3.18/"></script>
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Choose A Time Frame
+                    </a>
+                </li>
+                <li>
+                    <a href="/zero_three">00:00 - 03:00</a>
+                </li>
+                <li>
+                    <a href="/three_six">03:00 - 06:00</a>
+                </li>
+                <li>
+                    <a href="/six_nine">06:00 - 09:00</a>
+                </li>
+                <li>
+                    <a href="/nine_twelve">09:00 - 12:00</a>
+                </li>
+                <li>
+                    <a href="/twelve_fifteen">12:00 - 15:00</a>
+                </li>
+                <li>
+                    <a href="/fifteen">15:00 - 18:00</a>
+                </li>
+                <li>
+                    <a href="/eighteen">18:00 - 21:00</a>
+                </li>
+                <li>
+                    <a href="/twentyone_zero">21:00 - 24:00</a>
+                </li>
+                <li>
+                    <a href="/week">Pickup at Tech Companies</a>
+                </li>
+                <li>
+                    <a href="/tweets">People Tweets About Uber</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <% var rand = Math.floor(Math.random() * 1000); %>
+                <% for (var i = rand; i < rand + 50; i++) {%>
+                <div style="font-weight:normal;color:#000000;background-color:#A1D3FF;letter-spacing:1pt;word-spacing:2pt;font-size:12px;text-align:left;font-family:tahoma, verdana, arial, sans-serif;line-height:1;margin:24px;padding:13px;">
+                    <p>User: <%=result[i]["USER"]%></p>
+                    <p>Tweets: <%=result[i]["TWEETS"]%></p>
+                </div>
+                <%}%>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

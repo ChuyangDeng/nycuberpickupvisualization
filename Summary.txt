@@ -1,0 +1,58 @@
+NYC Uber Pickup Visualization
+
+Description:
+
+This project analyzes Uber pickup data in New York City starting from April 2014 to July 2014 and presents findings on a web application hosted on Amazon AWS. The web page displays all uber pickups on a selected day, April 4th, 2014 and data is broken down to 3 hour ranges so that users can get a sense of how uber pickup trends changes within a day. Pickups around 2 tech offices, Google and Palantir, are also investigated and the result is presented on a grid diagram broken down by weekday and time. In addition to data visualization, we also fetched tweets from Twitter to display what people talk about Uber.
+
+Datasets:
+
+All of our data are sourced from https://github.com/fivethirtyeight.
+For the “3-hour-division” visualization, we randomly chose data on the day of April 7th, 2014. Because of the huge amount of Uber pickup locations data in NYC, we have to narrow it down to one day and divide them by hour, otherwise the map would be overloaded with data dots.
+For the “tech company” visualization, we chose data in all days of April, 2014.
+
+Technologies:
+
+Data cleaning and parsing: 
+	We used Java to clean and parse the dataset. The original dataset is in csv format and it is enormous. We break it down to pickups on selected day and pickups close to 2 tech offices, Google and Palantir. Data are stored in arrayLists and dirty data will be skipped through using exception handling. We reformatted the data and wrote them out as csv and tsv files so that they can be easily read by the ArcGIS API and D3.js API. 
+
+Express and NodeJS:
+	We used Express and NodeJS to set up a local host and then host it on AWS EC2. NodeJS is mainly used for communication to render results from .js files to .ejs files. It is also helpful in connecting with MongoDB and rendering the results from MongoDB query.
+
+D3.js:
+	We used D3 for visualzing pickups near selected tech offices. Visualization sourced from http://bl.ocks.org/tjdecke/5558084.
+
+Twitter API:
+	We implemented twitter API using twitter4j in Java. We used classes such as Twitter, Status, Query to fetch tweets with a hashtag #uber, and wrote the data into a json file. We also wrote a simple JUnit test just to test if all objects from twitter4j classes are initiated successfully. In total, we fetched 1000 tweets that contain #uber.
+
+MongoDB:
+	Then we import the tweet.json file into MongoDB and embedded MongoDB query into javascript. The MongoDB collection “tweets” has 1000 documents, each with attributes “USER” and “TWEETS”. The query is very simple: 
+	collection.find({}).toArray(); 
+	We simply take all attributes of a document and render them on the page. But in order to control the number of tweets in display and also keep its randomness, we used the following method:
+	<% var rand = Math.floor((Math.random() * 1000) + 1); %>
+	<% for (var i = rand; i < result.length && i < rand + 50; i++) {%>
+	<div style="...">
+	<p>User: <%=result[i]["USER"]%></p>
+	<p>Tweets: <%=result[i]["TWEETS"]%></p>
+	</div>
+	<%}%>
+
+AWS EC2:
+	In order to provide easier access, the entire web application is hosted on Amazon EC2 instance. We created a new Elastic Beanstalk environment which will read package.json file in our package and run the program.  
+
+
+Work Breakdown:
+
+Data cleaning and parsing - Shuhong (Paula) Sun
+Twitter API call- Chuyang Deng
+ArcGIS API - Chuyang Deng
+MongoDB population and interaction - Chuyang Deng
+Visualization and Web Application - Shuhong (Paula) Sun & Chuyang Deng
+D3js API - Shuhong (Paula) Sun
+
+
+GitHub Repository:
+
+We created our own git repo at the following link:
+https://github.com/ChuyangDeng/nycuberpickupvisualization.git
+
+

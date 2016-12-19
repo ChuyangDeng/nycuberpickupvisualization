@@ -61,8 +61,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <% var rand = Math.floor(Math.random() * 1000); %>
-                <% for (var i = rand; i < rand + 50; i++) {%>
+                <% var rand = Math.floor((Math.random() * 1000) + 1); %>
+                <% for (var i = rand; i < result.length && i < rand + 50; i++) {%>
                 <div style="font-weight:normal;color:#000000;background-color:#A1D3FF;letter-spacing:1pt;word-spacing:2pt;font-size:12px;text-align:left;font-family:tahoma, verdana, arial, sans-serif;line-height:1;margin:24px;padding:13px;">
                     <p>User: <%=result[i]["USER"]%></p>
                     <p>Tweets: <%=result[i]["TWEETS"]%></p>
